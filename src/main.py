@@ -13,6 +13,6 @@ if __name__ == '__main__':
         print(f"THANKS FOR THE DETAILS WE WILL NOTIFY YOU !!")
         user_relation_obj = UserStockRelation.UserStocksRelation(user_email=user_email,
                                                                  stock_exchange_name=stock_exchange_name,
-                                                                 nse_code=nse_code, target=target, stop_loss=stop_loss,
+                                                                 nse_code=nse_code.upper(), target=target, stop_loss=stop_loss,
                                                                  set_percent_margin=set_percentage_margin)
         user_relation_obj.add_to_observer_queue()
