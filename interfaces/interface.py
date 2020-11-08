@@ -30,16 +30,6 @@ class StockToObserve(object):
         return serialized_output
 
 
-class SendNotification(object):
-    def __init__(self, send_to, information):
-        self.send_to = send_to
-        self.information = information
-
-    @abstractmethod
-    def send_notification(self):
-        pass
-
-
 class StockUserRelation(StockToObserve):
     @abstractmethod
     def load_current_details(self):
@@ -63,6 +53,7 @@ class Publisher(object):
     """
     This is the Publisher which notify its Subscribers when stock price change
     """
+
     def __init__(self):
         pass
 
@@ -88,8 +79,8 @@ class SendEmail(object):
     This is our Observer/subscriber which send the notification to the customer
     when it is notified about any change
     """
-    def __init__(self, stock_name, custom_message, user_email):
-        self.stock_name = stock_name
+
+    def __init__(self, user_email, custom_message):
         self.custom_message = custom_message
         self.user_email = user_email
 

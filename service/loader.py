@@ -2,24 +2,29 @@ import requests
 from utils import common_constants
 from utils.stock_enum import Code
 import json
+import pprint
 
 
 class LoadStock(object):
-    def __init__(self, nse_code, stock_exchange):
+    def __init__(self, nse_code, stock_exchange_name):
         self.nse_code = nse_code
         self.stock_code = Code().stock_code_scrap(nse_code)
-        self.stock_exchange_name = stock_exchange
+        self.stock_exchange_name = stock_exchange_name
         try:
             print(f"stock_enum====> {self.stock_code}")
-            if stock_exchange.lower() == "nse":
+            if stock_exchange_name.lower() == "nse":
                 base_url = common_constants.base_url_nse
-            elif stock_exchange.lower() == "bse":
+            elif stock_exchange_name.lower() == "bse":
                 base_url = common_constants.base_url_bse
             decoded_data = requests.get(base_url + str(self.stock_code)).content.decode('utf-8')
             self.stock_details = json.loads(decoded_data)
+            pprint.pprint(self.stock_details, indent=4)
         except ConnectionError:
             print(f"Error creating Connection with Source")
             pass
+
+    def get_dispid(self):
+        return self.stock_details['data']['DISPID'],
 
     def get_current_price(self):
         return self.stock_details['data']['pricecurrent']
@@ -32,7 +37,8 @@ class LoadStock(object):
 
     def get_all_data(self):
         return {
-            "price_current": self.get_current_price(),
-            "price_change": self.get_price_change(),
-            "price_percent_change": self.get_price_percentage_change()
+                "DISPID": self.get_dispid(),
+                "price_current": self.get_current_price(),
+                "price_change": self.get_price_change(),
+                "price_percent_change": self.get_price_percentage_change()
         }
