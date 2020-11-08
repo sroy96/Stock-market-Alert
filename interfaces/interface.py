@@ -84,6 +84,10 @@ class SendEmail(object):
         self.custom_message = custom_message
         self.user_email = user_email
 
+    # @abstractmethod
+    # def create_smtp_session(self):
+    #     pass
+
     @abstractmethod
     def send_mail(self):
         pass

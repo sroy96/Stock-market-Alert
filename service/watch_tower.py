@@ -19,7 +19,7 @@ class WatchTower(Publisher):
     def notify(self, user_email: str, messages: list):
         for observers in self.observser_list:
             if observers == NotificationUtils:
-
+                NotificationUtils(user_email=user_email, custom_message=messages).send_mail()
 
     def business_logic(self):
         while stock_list:
