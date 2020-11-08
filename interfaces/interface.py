@@ -59,7 +59,10 @@ Our Subject to attach and detach the observer
 """
 
 
-class SubjectManager(object):
+class Publisher(object):
+    """
+    This is the Publisher which notify its Subscribers when stock price change
+    """
     def __init__(self):
         pass
 
@@ -75,8 +78,16 @@ class SubjectManager(object):
     def notify(self):
         pass
 
+    @abstractmethod
+    def business_logic(self):
+        pass
+
 
 class SendEmail(object):
+    """
+    This is our Observer/subscriber which send the notification to the customer
+    when it is notified about any change
+    """
     def __init__(self, stock_name, custom_message, user_email):
         self.stock_name = stock_name
         self.custom_message = custom_message
