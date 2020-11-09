@@ -2,7 +2,7 @@ from enum import Enum
 from abc import abstractmethod
 from queue import Queue
 
-stock_list = Queue()
+stock_list = list()
 
 
 class Resource(Enum):
@@ -67,7 +67,7 @@ class Publisher:
         pass
 
     @abstractmethod
-    def business_logic(self):
+    def business_logic(self, stocks):
         pass
 
 

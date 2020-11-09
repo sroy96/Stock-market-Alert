@@ -19,10 +19,11 @@ class WatchTower(Publisher):
             if observers == NotificationUtils:
                 NotificationUtils(user_email=user_email, custom_message=messages).send_mail()
 
-    def business_logic(self):
-        while stock_list:
+    def business_logic(self, stocks):
+        print("===inside business logic ===")
+        for stocks_ in stock_list:
             message = []
-            stock = stock_list.get()
+            stock = stocks_
             stock_nse_code = stock["nse_code"]
             stock_exchange_name = stock["stock_exchange_name"]
             initial_price = stock["price_record"]
@@ -46,5 +47,5 @@ class WatchTower(Publisher):
 
             if self.state == 1:
                 self.notify(user_email=user_email, messages=message)
-
-            stock_list.task_done()
+            else:
+                print(f"=== ALL GOOD NOTHING TO NOTIFY ===")
