@@ -67,7 +67,7 @@ class Publisher:
         pass
 
     @abstractmethod
-    def business_logic(self, stocks):
+    def business_logic(self):
         pass
 
 
