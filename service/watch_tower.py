@@ -11,18 +11,19 @@ class WatchTower(Publisher):
         self.stock_val = stock_val
 
     def attach_observer(self):
-        self.observser_list.append(NotificationUtils())
+        """
+        Implement Observer pattern in future when the observers increase
+        :return:
+        """
+        self.observser_list.append(NotificationUtils.__name__)
 
     def detach_observer(self):
         pass
 
     def notify(self, user_email, messages):
-        # for observers in self.observser_list:
-        #     if observers == NotificationUtils:
         NotificationUtils(user_email=user_email, custom_message=messages).send_mail()
 
     def business_logic(self):
-        print("===inside business logic ===")
         for stocks_ in self.stock_val:
             message = []
             stock = stocks_

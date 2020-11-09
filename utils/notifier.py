@@ -1,10 +1,8 @@
 from interfaces.interface import SendEmail
 import smtplib
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 from confidential import SUPPORT_MAIL, SUPPORT_MAIL_PASS
+import datetime
 from utils import common_constants
 
 
@@ -16,26 +14,15 @@ class NotificationUtils(SendEmail):
         mail_content = "| |".join(message_list)
         try:
             s = smtplib.SMTP('smtp.gmail.com', 587)
+            msg = MIMEText(mail_content)
+            msg['Subject'] = "STOCK--ALERT !!"
+            msg['From'] = SUPPORT_MAIL
+            msg['To'] = self.user_email
             s.starttls()
             s.login(SUPPORT_MAIL, SUPPORT_MAIL_PASS)
-            s.sendmail(SUPPORT_MAIL, self.user_email, mail_content)
+            s.sendmail(SUPPORT_MAIL, self.user_email, msg.as_string())
             s.quit()
-            print("mail sent")
+            print(f"Notified successfully at: {datetime.datetime.now()} ")
         except ConnectionError:
             print("error in connecting to SMTP server")
-
-
-        # message = MIMEMultipart()
-        # message['From'] = SUPPORT_MAIL
-        # message['To'] = self.user_email
-        # message['Subject'] = "YOUR STOCK ALERTS !! "
-        # # The body and the attachments for the mail
-        # message.attach(MIMEText(mail_content, 'plain'))
-        # # Create SMTP session for sending the mail
-        # session = smtplib.SMTP('smtp.gmail.com', 587)  # use gmail with port
-        # session.starttls()  # enable security
-        # session.login(SUPPORT_MAIL, SUPPORT_MAIL_PASS)  # login with mail_id and password
-        # text = message[0].as_string()
-        # session.sendmail(SUPPORT_MAIL, self.user_email, text)
-        # session.quit()
-        # print(f"Mail Sent to {self.user_email}")
+            pass
