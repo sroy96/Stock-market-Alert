@@ -1,7 +1,7 @@
 from interfaces.interface import Publisher, stock_list
 from utils.notifier import NotificationUtils
 from service.loader import LoadStock
-
+import time
 
 class WatchTower(Publisher):
     state = 0
@@ -53,4 +53,4 @@ class WatchTower(Publisher):
                 self.notify(user_email=user_email, messages=message)
             else:
                 print(f"=== ALL GOOD NOTHING TO NOTIFY ===")
-                self.notify(user_email, ["tum ho jabardast", "lajawab sexy"])
+                self.notify(user_email, ["bull run", "sensex boom"])

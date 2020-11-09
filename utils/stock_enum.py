@@ -3,7 +3,9 @@ from enum import Enum
 
 
 class Code(object):
-    enum = {"RELIANCE": "RI"
+    enum = {"RELIANCE": "RI",
+            "CIPLA": "C",
+            "BIOCON": "BL03"
             }
 
     @staticmethod

@@ -21,7 +21,7 @@ class UserStocksRelation(StockUserRelation, ABC):
     def add_to_observer_queue(self):
         stock_list.append(self.map_stock())
         stock_list_copy = stock_list
-        cache_util.create_cache_client().delete(key="stock_list")
-        # li = [
-        #     {"d": "kamal", "s": "were"}]
+        if cache_util.create_cache_client().check_key("stock_list"):
+            cache_util.create_cache_client().delete(key="stock_list")
         cache_util.create_cache_client().set(key="stock_list", value=stock_list_copy)
+        print("---- Data Cached ----")
