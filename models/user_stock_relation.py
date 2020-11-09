@@ -1,7 +1,7 @@
 from abc import ABC
-import pprint
 from interfaces.interface import StockUserRelation, stock_list
 from service import loader
+from utils import cache_util
 
 
 class UserStocksRelation(StockUserRelation, ABC):
@@ -19,6 +19,6 @@ class UserStocksRelation(StockUserRelation, ABC):
 
     def add_to_observer_queue(self):
         stock_list.put(self.map_stock())
-        while stock_list:
-            pprint.pprint(stock_list.get(), indent=4)
-            stock_list.task_done()
+        stock_list_copy = stock_list
+        cache_util.create_cache_client().delete(key="stock_list")
+        cache_util.create_cache_client().set(key="stock_list", value=stock_list_copy)

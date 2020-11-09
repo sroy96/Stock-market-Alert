@@ -7,9 +7,6 @@ class WatchTower(Publisher):
     state = 0
     observser_list = list()
 
-    def __init__(self):
-        pass
-
     def attach_observer(self):
         self.observser_list.append(NotificationUtils)
 
@@ -17,6 +14,7 @@ class WatchTower(Publisher):
         pass
 
     def notify(self, user_email: str, messages: list):
+        print(f"=== user_email is {user_email} ")
         for observers in self.observser_list:
             if observers == NotificationUtils:
                 NotificationUtils(user_email=user_email, custom_message=messages).send_mail()
@@ -24,7 +22,7 @@ class WatchTower(Publisher):
     def business_logic(self):
         while stock_list:
             message = []
-            stock = stock_list.pop(0)
+            stock = stock_list.get()
             stock_nse_code = stock["nse_code"]
             stock_exchange_name = stock["stock_exchange_name"]
             initial_price = stock["price_record"]
@@ -48,3 +46,5 @@ class WatchTower(Publisher):
 
             if self.state == 1:
                 self.notify(user_email=user_email, messages=message)
+
+            stock_list.task_done()

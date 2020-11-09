@@ -11,14 +11,12 @@ class LoadStock(object):
         self.stock_code = Code().stock_code_scrap(nse_code)
         self.stock_exchange_name = stock_exchange_name
         try:
-            print(f"stock_enum====> {self.stock_code}")
             if stock_exchange_name.lower() == "nse":
                 base_url = common_constants.base_url_nse
             elif stock_exchange_name.lower() == "bse":
                 base_url = common_constants.base_url_bse
             decoded_data = requests.get(base_url + str(self.stock_code)).content.decode('utf-8')
             self.stock_details = json.loads(decoded_data)
-            pprint.pprint(self.stock_details, indent=4)
         except ConnectionError:
             print(f"Error creating Connection with Source")
             pass

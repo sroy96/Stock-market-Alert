@@ -49,13 +49,10 @@ Our Subject to attach and detach the observer
 """
 
 
-class Publisher(object):
+class Publisher:
     """
     This is the Publisher which notify its Subscribers when stock price change
     """
-
-    def __init__(self):
-        pass
 
     @abstractmethod
     def attach_observer(self):

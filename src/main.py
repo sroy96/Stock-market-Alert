@@ -1,9 +1,11 @@
 from models import user_stock_relation
-
+import threading
 if __name__ == '__main__':
     print(f"=============Hello Welcome to Stock Exchange notification Service===============")
     print(f"==============Please Provide stock details============================")
+    lock = threading.Lock()
     while True:
+        lock.acquire()
         user_email = input("please enter your email id: ")
         nse_code = input("enter stock code as on NSE Listing: ")
         target = input("provide target: ")

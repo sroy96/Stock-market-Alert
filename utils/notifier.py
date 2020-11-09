@@ -3,11 +3,13 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from confidential import SUPPORT_MAIL, SUPPORT_MAIL_PASS
+from utils import common_constants
 
 
 class NotificationUtils(SendEmail):
 
     def send_mail(self):
+        print("=== === Preparing to send mail === === ")
         message_list = self.custom_message
         mail_content = "| |".join(message_list)
         message = MIMEMultipart()
