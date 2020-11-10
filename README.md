@@ -15,4 +15,4 @@ pip install -r requirement.txt
 - Run src/main.py
 - Run utils/jobber.py
 
-  
+* Jobber is a scheduled task, the logs are on jobber_logs.txt
