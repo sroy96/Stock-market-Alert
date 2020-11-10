@@ -1,7 +1,10 @@
-from service.watch_tower import WatchTower
+import sys
+sys.path.append('../')
+print(sys.path)
 from utils import cache_util
 from datetime import datetime
 import pprint
+from service.watch_tower import WatchTower
 
 date_time = datetime.now()
 myFile = open('append.txt', 'a')
