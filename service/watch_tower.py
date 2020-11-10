@@ -29,24 +29,24 @@ class WatchTower(Publisher):
         for stocks_ in self.stock_val:
             message = []
             stock = stocks_
-            stock_nse_code = stock["nse_code"]
-            stock_exchange_name = stock["stock_exchange_name"]
-            initial_price = stock["price_record"]
-            percentage_change = stock["set_percentage_margin"]
-            stop_loss = stock["stop_loss"]
-            target = stock["target"]
-            user_email = stock["user_email"]
+            stock_nse_code = stock[common_constants.NSE_CODE]
+            stock_exchange_name = stock[common_constants.STOCK_EXCHANGE]
+            initial_price = stock[common_constants.PRICE_RECORD]
+            percentage_change = stock[common_constants.PERCENT_MARGIN]
+            stop_loss = stock[common_constants.STOP_LOSS]
+            target = stock[common_constants.TARGET]
+            user_email = stock[common_constants.USER_EMAIL]
             current_data = LoadStock(nse_code=stock_nse_code, stock_exchange_name=stock_exchange_name).get_all_data()
-            if float(current_data["price_current"]) >= float(target):
+            if float(current_data[common_constants.CURRENT_PRICE]) >= float(target):
                 self.state = 1
                 text = "Hey! " + stock_nse_code + " has reached the target***"
                 message.append(text)
-            if float(current_data["price_current"]) <= float(stop_loss):
+            if float(current_data[common_constants.CURRENT_PRICE]) <= float(stop_loss):
                 self.state = 1
                 text = "Loosing! " + stock_nse_code + " has gone down "
                 message.append(text)
             print(type(percentage_change))
-            if float(current_data["price_percent_change"]) >= float(percentage_change):
+            if float(current_data[common_constants.PRICE_PERCENTAGE_CHANGE]) >= float(percentage_change):
                 self.state = 1
                 text = "Hola! " + stock_nse_code + " has reached the set margin percent"
                 message.append(text)
@@ -57,7 +57,7 @@ class WatchTower(Publisher):
                 print(f"=== ALL GOOD NOTHING TO NOTIFY ===")
                 self.notify(user_email, ["bull run", "sensex boom"])
 
-            stock["current_details"] = current_data
+            stock[common_constants.CURRENT_DETAILS] = current_data
             new_stock_list.append(stock)
 
         print(type(new_stock_list))
