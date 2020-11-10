@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../')
 from datetime import datetime
 import pprint
 from service.watch_tower import WatchTower

@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+import sys
+sys.path.append('/home/saurav/Documents/Personal_projects/market-notification/models/')
 from models import user_stock_relation
 from utils import cache_util
 

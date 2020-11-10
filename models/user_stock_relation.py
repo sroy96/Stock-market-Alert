@@ -1,8 +1,9 @@
+#!/usr/bin/python3
 from abc import ABC
 from interfaces.interface import StockUserRelation, stock_list
 from service import loader
 from utils import cache_util
-from utils import  common_constants
+from utils import common_constants
 
 
 class UserStocksRelation(StockUserRelation, ABC):
