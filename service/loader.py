@@ -1,8 +1,7 @@
 import requests
-from utils import common_constants
 from utils.stock_enum import Code
 import json
-import pprint
+from utils import common_constants
 
 
 class LoadStock(object):
@@ -11,9 +10,9 @@ class LoadStock(object):
         self.stock_code = Code().stock_code_scrap(nse_code)
         self.stock_exchange_name = stock_exchange_name
         try:
-            if stock_exchange_name.lower() == "nse":
+            if stock_exchange_name.lower() == common_constants.NSE:
                 base_url = common_constants.base_url_nse
-            elif stock_exchange_name.lower() == "bse":
+            elif stock_exchange_name.lower() == common_constants.BSE:
                 base_url = common_constants.base_url_bse
             decoded_data = requests.get(base_url + str(self.stock_code)).content.decode('utf-8')
             self.stock_details = json.loads(decoded_data)
@@ -35,8 +34,8 @@ class LoadStock(object):
 
     def get_all_data(self):
         return {
-                "DISPID": self.get_dispid(),
-                "price_current": self.get_current_price(),
-                "price_change": self.get_price_change(),
-                "price_percent_change": self.get_price_percentage_change()
+                common_constants.DISPID: self.get_dispid(),
+                common_constants.CURRENT_PRICE: self.get_current_price(),
+                common_constants.PRICE_CHANGE: self.get_price_change(),
+                common_constants.PRICE_PERCENTAGE_CHANGE: self.get_price_percentage_change()
         }

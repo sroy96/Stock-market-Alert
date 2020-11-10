@@ -1,6 +1,8 @@
 # loader
 base_url_bse = 'https://priceapi.moneycontrol.com/pricefeed/bse/equitycash/'
 base_url_nse = 'https://priceapi.moneycontrol.com/pricefeed/nse/equitycash/'
+NSE = "nse"
+BSE = "bse"
 
 # input about stock
 USER_EMAIL = "user_email"
@@ -14,6 +16,7 @@ PRICE_RECORD = "price_record"
 CURRENT_PRICE = "price_current"
 PRICE_PERCENTAGE_CHANGE = "price_percent_change"
 CURRENT_DETAILS = "current_details"
+PRICE_CHANGE = "price_change"
 # smtp details
 SENDING_FROM = "From"
 

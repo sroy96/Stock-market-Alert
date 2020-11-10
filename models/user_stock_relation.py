@@ -15,8 +15,8 @@ class UserStocksRelation(StockUserRelation, ABC):
     def map_stock(self):
         stock_dictionary = self.serialize()
         load_state_details = self.load_current_details()
-        stock_dictionary["current_details"] = load_state_details
-        stock_dictionary["price_record"] = load_state_details["price_current"]
+        stock_dictionary[common_constants.CURRENT_DETAILS] = load_state_details
+        stock_dictionary[common_constants.PRICE_RECORD] = load_state_details[common_constants.CURRENT_PRICE]
         return stock_dictionary
 
     def add_to_observer_queue(self):
