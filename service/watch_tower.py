@@ -1,7 +1,7 @@
 from interfaces.interface import Publisher, stock_list
 from utils.notifier import NotificationUtils
 from service.loader import LoadStock
-import time
+
 
 class WatchTower(Publisher):
     state = 0
