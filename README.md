@@ -14,5 +14,5 @@ pip install -r requirement.txt
 - Run cache_server_up.sh 
 - Run src/main.py
 - Run utils/jobber.py
-
 * Jobber is a scheduled task, the logs are on jobber_logs.txt
+* Observer Pattern is used to observe stock price variations and notify the changes to the user.
