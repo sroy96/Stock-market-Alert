@@ -1,8 +1,8 @@
 from models import user_stock_relation
 from utils import cache_util
-import os
 
 if __name__ == '__main__':
+    cache_util.create_cache_client().flush_all()
     print(f"=============Hello Welcome to Stock Exchange notification Service===============")
     print(f"==============Please Provide stock details============================")
     cache_util.create_cache_client().flush_all()

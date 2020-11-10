@@ -1,6 +1,7 @@
 from interfaces.interface import Publisher, stock_list
 from utils.notifier import NotificationUtils
 from service.loader import LoadStock
+from utils import cache_util, common_constants
 
 
 class WatchTower(Publisher):
@@ -24,6 +25,7 @@ class WatchTower(Publisher):
         NotificationUtils(user_email=user_email, custom_message=messages).send_mail()
 
     def business_logic(self):
+        new_stock_list = list()
         for stocks_ in self.stock_val:
             message = []
             stock = stocks_
@@ -54,3 +56,9 @@ class WatchTower(Publisher):
             else:
                 print(f"=== ALL GOOD NOTHING TO NOTIFY ===")
                 self.notify(user_email, ["bull run", "sensex boom"])
+
+            stock["current_details"] = current_data
+            new_stock_list.append(stock)
+
+        print(type(new_stock_list))
+        cache_util.create_cache_client().set(common_constants.CACHE_KEY, new_stock_list)

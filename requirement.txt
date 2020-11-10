@@ -2,4 +2,3 @@ requests
 smtplib
 email
 pymemcache
-python-crontab

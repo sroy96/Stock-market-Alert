@@ -2,7 +2,7 @@ from abc import ABC
 from interfaces.interface import StockUserRelation, stock_list
 from service import loader
 from utils import cache_util
-import copy
+from utils import  common_constants
 
 
 class UserStocksRelation(StockUserRelation, ABC):
@@ -21,7 +21,7 @@ class UserStocksRelation(StockUserRelation, ABC):
     def add_to_observer_queue(self):
         stock_list.append(self.map_stock())
         stock_list_copy = stock_list
-        if cache_util.create_cache_client().check_key("stock_list"):
-            cache_util.create_cache_client().delete(key="stock_list")
-        cache_util.create_cache_client().set(key="stock_list", value=stock_list_copy)
+        if cache_util.create_cache_client().check_key(common_constants.CACHE_KEY):
+            cache_util.create_cache_client().delete(key=common_constants.CACHE_KEY)
+        cache_util.create_cache_client().set(key=common_constants.CACHE_KEY, value=stock_list_copy)
         print("---- Data Cached ----")

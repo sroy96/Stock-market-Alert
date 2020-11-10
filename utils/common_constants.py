@@ -13,3 +13,5 @@ DISPID = "DISPID"
 
 # smtp details
 SENDING_FROM = "From"
+
+CACHE_KEY = "stock_list"
