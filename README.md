@@ -14,9 +14,9 @@
 This software can be used to provide alert to the 
 users who forget to set target, stop loss or margin percentage while buying 
 the stock. Generally companies like Zerodha, Yahoo finance, Morning Star has made it available at 
-a subscription cost. 
+a subscription fees. 
 
-I think for a growth in market it require all of us to invest and it is my small contribution towards that as 
+I think for a growth in market it require all of us to invest and it is my small free contribution towards that as 
 a software developer. Keep Building for the Growth :) 
 
 ## How to Setup ?
@@ -39,3 +39,4 @@ pip install -r requirement.txt
 * Observer Pattern is used to observe stock price variations and notify the
  changes to the user.
 * In order to receive email notification create file confidential.py and add your Email(SUPPORT_MAIL) and Password (SUPPORT_MAIL_PASS)
+![notify](https://github.com/sroy96/Stock_Price_Notification/blob/main/notifications.png)

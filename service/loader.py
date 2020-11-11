@@ -11,6 +11,7 @@ class LoadStock(object):
             self.stock_code = Code().stock_code_scrap(nse_code)
         except BaseException:
             print(f"{nse_code} is not in our stock_enum")
+            self.stock_code = ""
         self.stock_exchange_name = stock_exchange_name
         try:
             if stock_exchange_name.lower() == common_constants.NSE:

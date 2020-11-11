@@ -12,9 +12,20 @@ class NotificationUtils(SendEmail):
         print(f"=== === Preparing to send mail === === to: {self.user_email} ")
         message_list = self.custom_message
         mail_content = "| |".join(message_list)
+        body = """\
+<html>
+  <head></head>
+  <body>
+    <p>Hi!<br>
+       Here is your Alert !<br>
+      """ + mail_content + """
+    </p>
+  </body>
+</html>
+"""
         try:
             s = smtplib.SMTP('smtp.gmail.com', 587)
-            msg = MIMEText(mail_content)
+            msg = MIMEText(body, 'html')
             msg['Subject'] = "STOCK--ALERT !!"
             msg['From'] = SUPPORT_MAIL
             msg['To'] = self.user_email
