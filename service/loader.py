@@ -7,7 +7,10 @@ from utils import common_constants
 class LoadStock(object):
     def __init__(self, nse_code, stock_exchange_name):
         self.nse_code = nse_code
-        self.stock_code = Code().stock_code_scrap(nse_code)
+        try:
+            self.stock_code = Code().stock_code_scrap(nse_code)
+        except BaseException:
+            print(f"{nse_code} is not in our stock_enum")
         self.stock_exchange_name = stock_exchange_name
         try:
             if stock_exchange_name.lower() == common_constants.NSE:
@@ -34,8 +37,8 @@ class LoadStock(object):
 
     def get_all_data(self):
         return {
-                common_constants.DISPID: self.get_dispid(),
-                common_constants.CURRENT_PRICE: self.get_current_price(),
-                common_constants.PRICE_CHANGE: self.get_price_change(),
-                common_constants.PRICE_PERCENTAGE_CHANGE: self.get_price_percentage_change()
+            common_constants.DISPID: self.get_dispid(),
+            common_constants.CURRENT_PRICE: self.get_current_price(),
+            common_constants.PRICE_CHANGE: self.get_price_change(),
+            common_constants.PRICE_PERCENTAGE_CHANGE: self.get_price_percentage_change()
         }

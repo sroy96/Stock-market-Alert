@@ -25,4 +25,4 @@ class UserStocksRelation(StockUserRelation, ABC):
         if cache_util.create_cache_client().check_key(common_constants.CACHE_KEY):
             cache_util.create_cache_client().delete(key=common_constants.CACHE_KEY)
         cache_util.create_cache_client().set(key=common_constants.CACHE_KEY, value=stock_list_copy)
-        print("---- Data Cached ----")
+        print(f"---- Data Cached ----")

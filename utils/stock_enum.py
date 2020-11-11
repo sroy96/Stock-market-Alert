@@ -7,7 +7,13 @@ class Code(object):
             "CIPLA": "C",
             "BIOCON": "BL03",
             "AXISBANK": "UTI10",
-            "HDFCBANK": "HDF01"
+            "HDFCBANK": "HDF01",
+            "BAJFINANCE": "BAF",
+            "HEROMOTOCO": "HHM",
+            "DIVISLAB": "DL03",
+            "KOTAKBANK":"KMB",
+            "HINDALCO":"HI",
+            "M&M": "MM"
             }
 
     @staticmethod

@@ -55,10 +55,8 @@ class WatchTower(Publisher):
                 self.notify(user_email=user_email, messages=message)
             else:
                 print(f"=== ALL GOOD NOTHING TO NOTIFY ===")
-                self.notify(user_email, ["bull run", "sensex boom"])
 
             stock[common_constants.CURRENT_DETAILS] = current_data
             new_stock_list.append(stock)
 
-        print(type(new_stock_list))
         cache_util.create_cache_client().set(common_constants.CACHE_KEY, new_stock_list)
