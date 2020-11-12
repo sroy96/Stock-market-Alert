@@ -11,8 +11,8 @@ class Code(object):
             "BAJFINANCE": "BAF",
             "HEROMOTOCO": "HHM",
             "DIVISLAB": "DL03",
-            "KOTAKBANK":"KMB",
-            "HINDALCO":"HI",
+            "KOTAKBANK": "KMF",
+            "HINDALCO": "HI",
             "M&M": "MM",
             "ITC": "ITC"
             }
