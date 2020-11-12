@@ -39,11 +39,11 @@ class WatchTower(Publisher):
             current_data = LoadStock(nse_code=stock_nse_code, stock_exchange_name=stock_exchange_name).get_all_data()
             if float(current_data[common_constants.CURRENT_PRICE]) >= float(target):
                 self.state = 1
-                text = "Hey! " + stock_nse_code + " has reached the target***"
+                text = "Hey! " + stock_nse_code + " has reached the target*** " + current_data[common_constants.CURRENT_PRICE]
                 message.append(text)
             if float(current_data[common_constants.CURRENT_PRICE]) <= float(stop_loss):
                 self.state = 1
-                text = "Loosing! " + stock_nse_code + " has gone down "
+                text = "Loosing! " + stock_nse_code + " has gone down: " + current_data[common_constants.CURRENT_PRICE]
                 message.append(text)
             print(type(percentage_change))
             if float(current_data[common_constants.PRICE_PERCENTAGE_CHANGE]) >= float(percentage_change):

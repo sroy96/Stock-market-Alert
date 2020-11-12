@@ -19,6 +19,7 @@ class StockToObserve(object):
         self.set_percent_margin = set_percent_margin
 
     def serialize(self):
+
         serialized_output = {
             "user_email": self.user_email,
             "stock_exchange_name": self.stock_exchange_name,

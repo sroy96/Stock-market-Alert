@@ -13,7 +13,8 @@ class Code(object):
             "DIVISLAB": "DL03",
             "KOTAKBANK":"KMB",
             "HINDALCO":"HI",
-            "M&M": "MM"
+            "M&M": "MM",
+            "ITC": "ITC"
             }
 
     @staticmethod
